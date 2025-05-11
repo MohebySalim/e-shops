@@ -20,7 +20,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-            'role_id' => 'required|exists:role,id', // Make sure the role exists
+            'role_id' => 'required|exists:role,id', // Ensure the role exists
         ]);
 
         if ($validator->fails()) {
