@@ -13,6 +13,9 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PaymentController;
 
+Route::get('/', function () {
+    return view('home');
+});
 
 // Home and Static Pages
 Route::get('/', [DashboardController::class, 'index'])->name('home');
