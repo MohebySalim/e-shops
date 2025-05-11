@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,7 +29,13 @@ class UserController extends Controller
             'role_id' => 'required|exists:role,id',
         ]);
 
-        $user = User::create($request->all());
+        $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role_id' => $request->role_id ?? 3, // Default to "customer" role
+    ]);
+
         return response()->json($user, 201);
     }
 

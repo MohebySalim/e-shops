@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->text('shipping_address')->nullable();
             $table->text('billing_address')->nullable();
             $table->text('address')->nullable();
-            $table->unsignedBigInteger('role_id');
+            $table->foreignId('role_id')->default(3)->constrained('roles');
             $table->timestamps();
 
             $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');

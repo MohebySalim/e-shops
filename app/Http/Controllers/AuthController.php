@@ -79,4 +79,9 @@ class AuthController extends Controller
         Auth::logout();
         return response()->json(['message' => 'Logged out successfully']);
     }
+
+    public function showloginForm()
+    {
+        return view('login');
+    }
 }
